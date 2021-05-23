@@ -22,7 +22,7 @@
           </td>
 
           <td>
-            <a (click)="editUser(data)">修改</a>
+            <a (click)="editUser()">修改</a>
           </td>
         </tr>
         </tbody>
@@ -32,3 +32,10 @@
     </ng-template>
   </nz-card>
 </div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="编辑" (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()" [nzOkDisabled]="!form.form.valid">
+  <form nz-form #form="ngForm">
+
+  </form>
+</nz-modal>

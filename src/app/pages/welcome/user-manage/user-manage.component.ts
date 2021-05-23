@@ -28,8 +28,16 @@ export class UserManageComponent implements OnInit {
     });
   }
 
-  editUser(){
-    
+  editUser() {
+
+  }
+
+  handleCancel() {
+
+  }
+
+  handleOk() {
+
   }
 
 }
