@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="title-box">
+  <div class="icon"></div>
+  <img class="logo" src="../../assets/login/logo.png"/>
+  <div class="title">
+    后台管理系统
+  </div>
+  <div class="subtitle"><div></div></div>
+</div>
+<div class="login-box" [ngStyle]="getScale()">
+  <div class="title">用户登录 / User Login</div>
+  <form nz-form #form="ngForm">
+    <nz-form-item>
+      <nz-form-label >账号</nz-form-label>
+      <nz-form-control nzHasFeedback [nzErrorTip]="UserNameTpl">
+        <input nz-input [(ngModel)]="user.username" name="UserName" required />
+        <ng-template #UserNameTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">账号不能为空</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >密码</nz-form-label>
+      <nz-form-control nzHasFeedback [nzErrorTip]="passwordTpl">
+        <input nz-input type="password" [(ngModel)]="user.password" name="password"  required />
+        <ng-template #passwordTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">密码不能为空</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button (click)="submit()" nzType="primary" [nzLoading]="loading" [disabled]="!form.form.valid">登录</button>
+    </nz-form-control>
+  </nz-form-item>
+  <div class="version">版本号: 1.0</div>
+</div>
+

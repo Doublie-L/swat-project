@@ -41,13 +41,15 @@ export class AppInterceptor implements HttpInterceptor {
           if (event instanceof HttpResponse) {
             // event.status http状态值
             if (event.status === 200) {
+              console.log(1);
               const body = event.body;
               if (body instanceof Blob) {                 // 文件流不拦截  业务需求
                 return event;
               } else if (body.msgCode === '-2') {
                 this.message.error('此用户未登录,或长时间未操作');
                 this.router.navigate(['/login']);
-              } else if (body.msgCode !== '0') {
+              } else if (body.msgCode !== 0) {
+                console.log(1);
                 this.message.error(body.msg);
               }
             }
@@ -56,7 +58,8 @@ export class AppInterceptor implements HttpInterceptor {
         },
         event => {
           if (event.status === 401) {
-            // this.message.error('此用户未登录,或长时间未操作,请跳转到平台重新登录');
+            this.message.error('此用户未登录,或长时间未操作,请跳转到平台重新登录');
+            this.router.navigate(['login'])
             // const returnUrl = localStorage.getItem('returnUrl');
             // if (returnUrl) {
             //   window.location.replace(returnUrl);

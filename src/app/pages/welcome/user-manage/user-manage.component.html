@@ -1,0 +1,34 @@
+<div class="content">
+  <nz-card [nzBordered]="false" nzTitle="用户管理" [nzExtra]="extraTemplate">
+      <nz-table  style="height:calc(100vh - 240px)"  #basicTable [nzData]="listOfData" [nzScroll]="{y:'500px'}">
+        <thead>
+        <tr>
+          <th nzWidth="80px">用户名</th>
+          <th nzWidth="80px">权限</th>
+          <th nzWidth="80px">部门</th>
+          <th nzWidth="80px">年纪</th>
+          <th nzWidth="80px">id</th>
+          <th nzWidth="150px">修改</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.username }}</td>
+          <td>{{ data.role }}</td>
+          <td>{{ data.age }}</td>
+          <td >{{data._id}}</td>
+          <td>
+            <a> {{ data.breed }}</a>
+          </td>
+
+          <td>
+            <a (click)="editUser(data)">修改</a>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+    <ng-template #extraTemplate>
+      <a>More</a>
+    </ng-template>
+  </nz-card>
+</div>
